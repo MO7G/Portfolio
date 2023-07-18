@@ -2,6 +2,9 @@
     flex: 1;
     width: 100%;
     flex-direction: column;
+    h2{
+      color: var(--temp-color);
+    }
   }
   
   .app__work-filter {

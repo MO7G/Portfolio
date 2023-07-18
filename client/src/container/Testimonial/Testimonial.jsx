@@ -21,6 +21,7 @@ const Testimonial = () => {
 
     client.fetch(query).then((data) => {
       setTestimonials(data);
+      console.log(data[1].imgurl.asset._ref);
     });
 
     client.fetch(brandsQuery).then((data) => {
@@ -33,7 +34,7 @@ const Testimonial = () => {
       {testimonials.length && (
         <>
           <div className="app__testimonial-item app__flex">
-            <img src='../../assets/about01.png' alt={testimonials[currentIndex].name} />
+            <img src={urlFor(testimonials[currentIndex].imgurl)}  />
             <div className="app__testimonial-content">
               <p className="p-text">{testimonials[currentIndex].feedback}</p>
               <div>
@@ -43,7 +44,7 @@ const Testimonial = () => {
             </div>
           </div>
 
-          <div className="app__testimonial-btns app__flex">
+          <div  className="app__testimonial-btns app__flex">
             <div className="app__flex" onClick={() => handleClick(currentIndex === 0 ? testimonials.length - 1 : currentIndex - 1)}>
               <HiChevronLeft />
             </div>
