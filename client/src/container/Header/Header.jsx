@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 
-import { AppWrap } from '../../wrapper';
+import { AppWrap, MotionWrap } from '../../wrapper';
 import { images } from '../../constants';
 import './Header.scss';
 
@@ -31,11 +31,6 @@ const Header = () => (
             <h1 className="head-text">I am mohammed</h1>
           </div>
         </div>
-
-        <div className="tag-cmp app__flex">
-          <p className="p-text">Backend Developer</p>
-
-        </div>
       </div>
     </motion.div>
 
@@ -44,6 +39,10 @@ const Header = () => (
       transition={{ duration: 0.5, delayChildren: 0.5 }}
       className="app__header-img"
     >
+        <div className="tag-cmp app__flex">
+          <h1 className="head-text-1">I'm a motivated third-year computer science student with one year of backend programming experience. Along with my development experience, I enjoy competitive programming a lot. 
+</h1>
+        </div>
     { /*<img src={images.personal} alt="profile_bg" /> */}
     {/*    <motion.img
         whileInView={{ scale: [0, 1] }}
@@ -69,4 +68,9 @@ const Header = () => (
   </div>
 );
 
-export default AppWrap(Header,'home');
+
+export default AppWrap(
+  MotionWrap(Header, 'app__header'),
+  'home',
+  'app__whitebg',
+);

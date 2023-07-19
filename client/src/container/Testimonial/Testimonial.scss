@@ -123,6 +123,7 @@
 
 .app__testimonial-brands {
   width: 80%;
+ // background-color: black;
   flex-wrap: wrap;
   margin-top: 2rem;
 
@@ -134,7 +135,7 @@
       width: 100%;
       height: auto;
       object-fit: cover;
-      filter: grayscale(1);
+     filter: grayscale(1);
     }
 
     &:hover {

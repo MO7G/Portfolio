@@ -23,12 +23,24 @@
     img {
       width: 80px;
       height: 30px;
-
       @media screen and (min-width: 2000px) {
         width: 180px;
         height: 40px;
+        
+
       }
     }
+
+    &:hover {
+      img {
+        transition: 0.1s;
+        color: red;
+        cursor: pointer;
+        filter: invert(11%) sepia(76%) saturate(5394%) hue-rotate(334deg) brightness(98%) contrast(101%);      }
+    }
+
+
+    
   }
   
   .app__navbar-links {
