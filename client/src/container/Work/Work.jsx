@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { AiFillEye, AiFillGithub } from 'react-icons/ai';
+  import {MdDescription} from 'react-icons/md'
+import { colorsArray } from '../../assets/general/colors';
 import { motion } from 'framer-motion';
 
 import { AppWrap, MotionWrap } from '../../wrapper';
@@ -11,6 +13,7 @@ const Work = () => {
   const [filterWork, setFilterWork] = useState([]);
   const [activeFilter, setActiveFilter] = useState('All');
   const [animateCard, setAnimateCard] = useState({ y: 0, opacity: 1 });
+  const [colors,setColors] = useState([])
 
   useEffect(() => {
     const query = '*[_type == "works"]';
@@ -19,9 +22,17 @@ const Work = () => {
       setWorks(data);
       setFilterWork(data);
     });
+    console.log(colorsArray)
   }, []);
 
+  const randomIndex = () =>{
+    const random = Math.random();
+    const randomNumber = Math.floor(random * 4) + 1;
+    return randomNumber;
+  }
+  
   const handleWorkFilter = (item) => {
+    console.log(item)
     setActiveFilter(item);
     setAnimateCard([{ y: 100, opacity: 0 }]);
 
@@ -41,7 +52,7 @@ const Work = () => {
       <h2 className="head-text">My Creative <span>Portfolio</span> Section</h2>
 
       <div className="app__work-filter">
-        {['UI/UX', 'Web App', 'Mobile App', 'React JS','Algorithms', 'All'].map((item, index) => (
+        {['College','Back End','Web App', 'Mobile App','Ai','Algorithms', 'All'].map((item, index) => (
           <div
             key={index}
             onClick={() => handleWorkFilter(item)}
@@ -63,43 +74,39 @@ const Work = () => {
               className="app__work-img app__flex"
             >
               <img src={urlFor(work.imgUrl)} alt={work.name} />
+               
+             
 
-              <motion.div
-                whileHover={{ opacity: [0, 1] }}
-                transition={{ duration: 0.25, ease: 'easeInOut', staggerChildren: 0.5 }}
-                className="app__work-hover app__flex"
-              >
-                <a href={work.projectLink} target="_blank" rel="noreferrer">
-
-                  <motion.div
-                    whileInView={{ scale: [0, 1] }}
-                    whileHover={{ scale: [1, 0.90] }}
-                    transition={{ duration: 0.25 }}
-                    className="app__flex"
-                  >
-                    <AiFillEye />
-                  </motion.div>
-                </a>
-                <a href={work.codeLink} target="_blank" rel="noreferrer">
-                  <motion.div
-                    whileInView={{ scale: [0, 1] }}
-                    whileHover={{ scale: [1, 0.90] }}
-                    transition={{ duration: 0.25 }}
-                    className="app__flex"
-                  >
-                    <AiFillGithub />
-                  </motion.div>
-                </a>
-              </motion.div>
             </div>
 
             <div className="app__work-content app__flex">
               <h4 className="bold-text">{work.title}</h4>
               <p className="p-text" style={{ marginTop: 10 }}>{work.description}</p>
 
+              <div className='app__work-stack app__flex'>
+                <h5>Stacks</h5>
+               <div className='app__work-stack-tags app__flex'>
+                <div className='app__work-stack-item app__flex'>
+                {work.stacks?.map((stack)=>(
+                  <span className='bold-text'>{stack}</span>
+
+                ))}
+                </div>
+                </div>
+              </div>
+
               <div className="app__work-tag app__flex">
                 <p className="p-text">{work.tags[0]}</p>
               </div>
+
+              <div className='app__work-hyerlink app__flex'>
+                <a href={work.projectLink} target="_blank" rel="noreferrer">
+                    <AiFillEye />
+                </a>
+                <a href={work.codeLink} target="_blank" rel="noreferrer">
+                    <AiFillGithub />
+                </a>
+                </div>
             </div>
           </div>
         ))}

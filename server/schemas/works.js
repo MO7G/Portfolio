@@ -45,6 +45,19 @@ export default {
          }
        ]
       },
+
+      {
+        name: 'stacks',
+        title: 'Stacks',
+       type:'array',
+       of: [
+         {
+           name:'stack',
+           title:'Stack',
+           type:'string'
+         }
+       ]
+      },
      
     ],
   }
