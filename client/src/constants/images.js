@@ -34,10 +34,18 @@ import bolt from '../assets/bolt.png';
 import nb from '../assets/nb.png';
 import spotify from '../assets/spotify.png';
 import personal from '../assets/personal.png'
-
+import kay from '../assets/kay.png'
 import logoBlack from '../assets/logo-no-background.png';
-
+import coding from '../assets/coding.png'
+import student from '../assets/student.png'
+import developer from '../assets/developer.png'
+import robot from '../assets/robot.png'
 export default {
+  developer,
+  robot,
+  student,
+  kay,
+  coding,
   logoBlack,
   personal,
   email,
@@ -73,3 +81,5 @@ export default {
   nb,
   spotify,
 };
+
+

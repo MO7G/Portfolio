@@ -13,7 +13,6 @@ const Work = () => {
   const [filterWork, setFilterWork] = useState([]);
   const [activeFilter, setActiveFilter] = useState('All');
   const [animateCard, setAnimateCard] = useState({ y: 0, opacity: 1 });
-  const [colors,setColors] = useState([])
 
   useEffect(() => {
     const query = '*[_type == "works"]';
@@ -25,11 +24,6 @@ const Work = () => {
     console.log(colorsArray)
   }, []);
 
-  const randomIndex = () =>{
-    const random = Math.random();
-    const randomNumber = Math.floor(random * 4) + 1;
-    return randomNumber;
-  }
   
   const handleWorkFilter = (item) => {
     console.log(item)
@@ -52,7 +46,7 @@ const Work = () => {
       <h2 className="head-text">My Creative <span>Portfolio</span> Section</h2>
 
       <div className="app__work-filter">
-        {['College','Back End','Web App', 'Mobile App','Ai','Algorithms', 'All'].map((item, index) => (
+        {['College','Back End','Web App', 'Mobile App','Ai','Algorithms','Self Learning', 'All'].map((item, index) => (
           <div
             key={index}
             onClick={() => handleWorkFilter(item)}
@@ -87,8 +81,8 @@ const Work = () => {
                 <h5>Stacks</h5>
                <div className='app__work-stack-tags app__flex'>
                 <div className='app__work-stack-item app__flex'>
-                {work.stacks?.map((stack)=>(
-                  <span className='bold-text'>{stack}</span>
+                {work.stacks?.map((stack,index)=>(
+                  <span className='bold-text' style={{backgroundColor:`${colorsArray[index % colorsArray.length]}`}}>{stack}</span>
 
                 ))}
                 </div>

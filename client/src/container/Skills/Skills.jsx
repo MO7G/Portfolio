@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Tooltip as ReactTooltip } from 'react-tooltip'
 
-
+import 'react-tooltip/dist/react-tooltip.css'
 import { AppWrap, MotionWrap } from '../../wrapper';
 import { urlFor, client } from '../../client';
 import './Skills.scss';
@@ -67,8 +67,8 @@ const Skills = () => {
                       data-for={work.name}
                       key={work.name}
                     >
-                      <h4 className="bold-text">{work.name}</h4>
-                      <p className="p-text">{work.company}</p>
+                      <h4 className="bold-text" data-tooltip-id={work.name} data-tooltip-content={work.desc}>{work.name}</h4>
+                      <p className="p-text" data-tooltip-id={work.name} data-tooltip-content={work.desc}>{work.company}</p>
                     </motion.div>
                     <ReactTooltip
                       id={work.name}
@@ -76,7 +76,7 @@ const Skills = () => {
                       arrowColor="#fff"
                       className="skills-tooltip"
                     >
-                      {work.desc}
+                      {<p>{work.desc}</p>}
                     </ReactTooltip>
                   </>
                 ))}

@@ -1,6 +1,6 @@
 #home {
     position: relative;
-    background: url("../../assets/background.png");
+    //background: url("../../assets/background.png");
     background-size: cover;
     background-position: center;
     background-repeat: repeat;
@@ -33,6 +33,7 @@
   
     @media screen and (max-width: 450px) {
       padding: 6rem 1rem 2rem;
+     // background-color: green;
     }
   }
   
@@ -68,20 +69,40 @@
       border-radius: 15px;
       flex-direction: row;
       width: auto;
+     // background-color: green;
   
       box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+      img{
+        width: 100px;
+        height: 100px;
+
+        @media screen and (max-width: 500px) {
+          width: 50px;
+          height: 50px;
+        }
+      }
       p{
         color: var(--white-color);
       }
       h1{
-        color: var(--white-color);
+        color: var(--secondary-color);
+
+        @media screen and (max-width: 650px) {
+          font-size: 1.5rem;
+        }
       }
+
+      @media screen and (max-width: 400px) {
+
+
+      }
+
+
     }
   
     .tag-cmp {
       flex-direction: column;
       margin-top: 3rem;
-  
       p {
         width: 100%;
         text-transform: uppercase;
@@ -182,7 +203,8 @@
     justify-content: flex-end;
     align-items: flex-end;
     flex-direction: column;
-   
+
+    
  
     .tag-cmp {
       padding: 1rem 2rem;
@@ -193,6 +215,10 @@
       width: auto;
       margin-top: 3rem;
   
+      img{
+        width: 30px;
+        height: 30px;
+      }
   
       box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
       p{
@@ -208,12 +234,15 @@
       @media screen and (max-width: 700px) {
         width: 100%;
         flex-direction: row;
-        background-color: green;
+        //background-color: green;
         flex-wrap: wrap;
         margin-left: 0;
         margin-bottom: 2rem;
         div {
           margin: 1rem;
+        }
+        h1{
+          font-size: 1rem;
         }
       }
 

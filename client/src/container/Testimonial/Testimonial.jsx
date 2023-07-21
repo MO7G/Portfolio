@@ -21,7 +21,7 @@ const Testimonial = () => {
 
     client.fetch(query).then((data) => {
       setTestimonials(data);
-      console.log(data[1].imgurl.asset._ref);
+    //  console.log(data[1].imgurl.asset._ref);
     });
 
     client.fetch(brandsQuery).then((data) => {
@@ -37,8 +37,10 @@ const Testimonial = () => {
             <img src={urlFor(testimonials[currentIndex].imgurl)}  />
             <div className="app__testimonial-content">
               <p className="p-text">{testimonials[currentIndex].feedback}</p>
-              <div>
-                <h4 className="bold-text">{testimonials[currentIndex].name}</h4>
+              <div className='app_testimonial-content-name'>
+                <a  href={testimonials[currentIndex].linkedin}  target="_blank" rel="noreferrer">
+                <h4 >{testimonials[currentIndex].name}</h4>
+                </a>
                 <h5 className="p-text">{testimonials[currentIndex].company}</h5>
               </div>
             </div>
