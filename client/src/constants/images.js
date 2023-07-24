@@ -40,7 +40,9 @@ import coding from '../assets/coding.png'
 import student from '../assets/student.png'
 import developer from '../assets/developer.png'
 import robot from '../assets/robot.png'
+import chat from '../assets/businessman.png'
 export default {
+  chat,
   developer,
   robot,
   student,
