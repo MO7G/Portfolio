@@ -13,15 +13,16 @@
   }
   
   .app__profile-item {
-    width: 190px;
-    height: 300px;
+    width: 15em;
+   // height: 300px;
+   // background-color: green;
   //  background-color: green;
     display: flex;
     justify-content: flex-start;
     align-items: flex-start;
     flex-direction: column;
     margin: 2rem;
-  
+    
     img {
       width: 90%;
       padding: 10px;
@@ -42,12 +43,13 @@
     }
   
     @media screen and (min-width: 2000px) {
-      width: 370px;
-      margin: 2rem 4rem;
+     // width: 370px;
+     // margin: 2rem 4rem;
   
       img {
-        height: 320px;
+        //height: 320px;
       }
     }
+   
   }
-  
+ 

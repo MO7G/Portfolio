@@ -24,11 +24,11 @@
   }
 
   @media screen and (min-width: 2000px) {
-    min-height: 450px;
+//min-height: 450px;
 
     img {
-      width: 150px;
-      height: 150px;
+      // width: 150px;
+      // height: 150px;
     }
   }
 
@@ -72,8 +72,8 @@
     font-family: var(--font-base);
 
     @media screen and (min-width: 2000px) {
-      font-size: 2rem;
-      line-height: 3.5rem;
+      // font-size: 2rem;
+      // line-height: 3.5rem;
     }
   }
 
@@ -119,12 +119,12 @@
     }
 
     @media screen and (min-width: 2000px) {
-      width: 100px;
-      height: 100px;
+      // width: 100px;
+      // height: 100px;
 
       svg {
-        width: 45px;
-        height: 45px;
+        // width: 45px;
+        // height: 45px;
       }
     }
   }
@@ -154,8 +154,8 @@
     }
 
     @media screen and (min-width: 2000px) {
-      width: 210px;
-      margin: 2rem;
+      // width: 210px;
+      // margin: 2rem;
     }
 
     @media screen and (max-width: 450px) {

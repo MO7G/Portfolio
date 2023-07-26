@@ -32,8 +32,8 @@
       }
   
       @media screen and (min-width: 2000px) {
-        padding: 1rem 2rem;
-        border-radius: 0.85rem;
+        //padding: 1rem 2rem;
+        //border-radius: 0.85rem;
       }
     }
   
@@ -67,9 +67,9 @@
       }
   
       @media screen and (min-width: 2000px) {
-        width: 470px;
-        padding: 1.25rem;
-        border-radius: 0.75rem;
+     //   width: 470px;
+      //  padding: 1.25rem;
+       // border-radius: 0.75rem;
       }
   
       @media screen and (max-width: 300px) {
@@ -96,7 +96,7 @@
     }
   
     @media screen and (min-width: 2000px) {
-      height: 350px;
+   //   height: 350px;
     }
   }
   
@@ -146,7 +146,7 @@
       line-height: 1.5;
       color: var(--temp-color);
       @media screen and (min-width: 2000px) {
-        margin-top: 3rem;
+       // margin-top: 3rem;
       }
     }
 

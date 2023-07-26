@@ -1,5 +1,5 @@
 .app__navbar {
-    width: 100%;
+   width: 100%;
   
     display: flex;
     justify-content: space-between;
@@ -24,8 +24,8 @@
       width: 80px;
       height: 30px;
       @media screen and (min-width: 2000px) {
-        width: 180px;
-        height: 40px;
+      //  width: 180px;
+       // height: 40px;
         
 
       }
@@ -89,7 +89,8 @@
     }
   
     @media screen and (max-width: 900px) {
-      display: none;
+     display: none;
+ //     background-color: green;
     }
   }
   
@@ -128,8 +129,8 @@
       align-items: flex-end;
       flex-direction: column;
       
-      background: url('../../assets/bgWhite.png');
-      background-color: var(--white-color);
+    //  background: url('../../assets/bgWhite.png');
+      background-color: var(--temp-color);
       background-size: cover;
       background-repeat: repeat;
   
@@ -159,7 +160,7 @@
           margin: 1rem;
   
           a {
-            color: var(--gray-color);
+            color: var(--secondary-color);
             text-decoration: none;
             font-size: 1rem;
             text-transform: uppercase;

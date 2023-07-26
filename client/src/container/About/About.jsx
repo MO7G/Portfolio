@@ -38,6 +38,13 @@ const About = () => {
           </motion.div>
         ))}
       </div>
+
+      <div className='test'>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
     </>
   );
 };

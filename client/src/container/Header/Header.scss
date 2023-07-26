@@ -207,6 +207,7 @@
     
  
     .tag-cmp {
+
       padding: 1rem 2rem;
       text-align: center;
       background: var(--temp-color);
@@ -214,6 +215,7 @@
       flex-direction: row;
       width: auto;
       margin-top: 3rem;
+      margin-bottom: 3rem;
   
       img{
         width: 30px;
@@ -231,8 +233,10 @@
       h1{
         color: var(--white-color);
       }
-      @media screen and (max-width: 700px) {
+      @media screen and (max-width: 600px) {
         width: 100%;
+        //background-color: green;
+        height: 100%;
         flex-direction: row;
         //background-color: green;
         flex-wrap: wrap;
