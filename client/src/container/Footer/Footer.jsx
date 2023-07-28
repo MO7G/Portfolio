@@ -42,8 +42,8 @@ const Footer = () => {
 
       <div className="app__footer-cards">
         <div className="app__footer-card ">
-          <img src={images.email} alt="email" />
-          <a href="mailto:hello@micael.com" className="p-text">muhamedelhagg@gmail.com</a>
+          <img src={images.outbox} alt="email" />
+          <a href="mailto:muhamedelhagg@gmail.com" className="p-text">muhamedelhagg@gmail.com</a>
         </div>
         <div className="app__footer-card">
           <img src={images.mobile} alt="phone" />
@@ -67,7 +67,7 @@ const Footer = () => {
               onChange={handleChangeInput}
             />
           </div>
-          <button type="button" className="p-text" onClick={handleSubmit}>{!loading ? 'Send Message' : 'Sending...'}</button>
+          {!loading ? <button type="button" className='p-text' onClick={handleSubmit}>Send Message</button> :<img className='app__footer-form-rocket app__flex' src={images.email}></img> }
         </div>
       ) : (
         <div>

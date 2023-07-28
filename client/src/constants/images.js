@@ -41,7 +41,12 @@ import student from '../assets/student.png'
 import developer from '../assets/developer.png'
 import robot from '../assets/robot.png'
 import chat from '../assets/businessman.png'
+import shuttle from '../assets/shuttle.png'
+import rocket from '../assets/rocket.gif'
+import outbox from '../assets/outbox.png'
 export default {
+  rocket,
+  shuttle,
   chat,
   developer,
   robot,
@@ -82,6 +87,7 @@ export default {
   bolt,
   nb,
   spotify,
+  outbox
 };
 
 
