@@ -81,7 +81,7 @@ const Work = () => {
   return (
     <>
       <h2 className="head-text">
-      My  <span>accomplished</span> projects  
+        My Creative <span>Portfolio</span> Section
       </h2>
 
       <div className="app__work-filter">
@@ -113,7 +113,12 @@ const Work = () => {
         className="app__work-portfolio"
       >
         {filterWork.map((work, index) => (
-          <div className="app__work-item app__flex" key={index}>
+          <div
+            className={`app__work-item app__flex ${
+              work.recent ? "recent" : ""
+            }`}
+            key={index}
+          >
             <div className="app__work-img app__flex">
               <img src={urlFor(work.imgUrl)} alt={work.name} />
             </div>
@@ -149,9 +154,12 @@ const Work = () => {
               </div>
 
               <div className="app__work-hyerlink app__flex">
-                <a href={work.projectLink} target="_blank" rel="noreferrer">
-                  <AiFillEye />
-                </a>
+                {work?.projectLink?.length > 0 && (
+                  <a href={work.projectLink} target="_blank" rel="noreferrer">
+                    <AiFillEye />
+                  </a>
+                )}
+
                 <a href={work.codeLink} target="_blank" rel="noreferrer">
                   <AiFillGithub />
                 </a>

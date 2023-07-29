@@ -20,6 +20,11 @@ export default {
       type: 'string',
     },
     {
+      name: 'recent',
+      title: 'React Project',
+      type: 'boolean'
+    },
+    {
       name: 'codeLink',
       title: 'Code Link',
       type: 'string',
