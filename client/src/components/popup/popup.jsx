@@ -1,26 +1,12 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect,useRef } from "react";
 import "./popup.scss";
 import { AiOutlineClose } from "react-icons/ai";
 
-const PopOut = ({ onClose, title, link }) => {
-  const handlePopupClick = (event) => {
-    event.stopPropagation(); // Prevent click event from bubbling up to the overlay
-  };
-
-  useEffect(() => {
-    console.log(link);
-    // Add the "no-scroll" class to the body element when the popup is shown
-    document.body.classList.add("no-scroll");
-
-    // Remove the "no-scroll" class from the body element when the popup is hidden
-    return () => {
-      document.body.classList.remove("no-scroll");
-    };
-  }, []);
+const PopOut = ({ onClose,title, link }) => {
 
   return (
-    <div className="gray-overlay" onClick={handlePopupClick}>
-      <div className="pop-out">
+    <div className="gray-overlay">
+      <div className="pop-out" >
         <div className="content">
           <span className="close-btn" onClick={onClose}>
             <a target="_blank" rel="noreferrer">

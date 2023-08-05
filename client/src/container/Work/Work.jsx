@@ -8,14 +8,18 @@ import PopOut from "../../components/popup/popup";
 import { AppWrap, MotionWrap } from "../../wrapper";
 import { urlFor, client } from "../../client";
 import "./Work.scss";
+import { images } from "../../constants";
 
 const Work = () => {
   const [works, setWorks] = useState([]);
   const [filterWork, setFilterWork] = useState([]);
   const [activeFilter, setActiveFilter] = useState("All");
   const [animateCard, setAnimateCard] = useState({ y: 0, opacity: 1 });
-  const [popupActive, setPopupActive] = useState(false);
   const [popupStates, setPopupStates] = useState({});
+  const [popupWork,setPopupWork] = useState(false);
+  const [popupWorkCounter,setPopupWorkCounter] = useState(0);
+  const [windowScrollY,setWindowScrollY] = useState();
+  const scrollThreshold = 400; // Set the scroll threshold here (in pixels)
 
   useEffect(() => {
     const query = '*[_type == "works"]';
@@ -24,8 +28,33 @@ const Work = () => {
       setWorks(data);
       setFilterWork(data);
     });
-    console.log(colorsArray);
+
+
+   
   }, []);
+
+  useEffect(()=>{
+    const handleVisibilityChange = () => {
+      if (document.visibilityState != "hidden") {
+        handleClosePopup(false);
+      }
+    };
+    const handleScroll = () => {
+
+      if( (window.scrollY - scrollThreshold> windowScrollY) || (window.scrollY + scrollThreshold < windowScrollY)){
+        handleClosePopup();
+      }    
+      }
+
+
+    window.addEventListener("scroll", handleScroll);
+    document.addEventListener("visibilitychange", handleVisibilityChange);
+
+    return () => {
+      document.removeEventListener("visibilitychange", handleVisibilityChange);
+      window.removeEventListener("scroll", handleScroll);
+    };
+  },[windowScrollY])
 
   useEffect(() => {
     // Initialize the popupStates state with default values for each item
@@ -45,8 +74,14 @@ const Work = () => {
     setPopupStates(initialPopupStates);
   }, [filterWork]);
 
-  const handleOpenPopup = (title) => {
+
+
+
+  const handleOpenPopup = () => {
     // Open the popup for the specified item title
+  //  let temp = document.visibilityState;
+  setWindowScrollY(window.scrollY);
+  let title = popupWork
     const newPopupStates = {
       ...popupStates,
       [title]: true,
@@ -54,17 +89,19 @@ const Work = () => {
 
     setPopupStates(newPopupStates);
   };
+  
 
-  const handleClosePopup = (title) => {
-    // Close the popup for the specified item title
-    setPopupStates((prevStates) => ({
-      ...prevStates,
-      [title]: false,
-    }));
+  const handleClosePopup = () => {
+    // Create a new object with all titles set to false
+    const allTitlesFalse = Object.keys(popupStates).reduce((acc, title) => {
+      acc[title] = false;
+      return acc;
+    }, {});  
+    setPopupStates(allTitlesFalse); // Update the state with the new object
   };
+  
 
   const handleWorkFilter = (item) => {
-    console.log(item);
     setActiveFilter(item);
     setAnimateCard([{ y: 100, opacity: 0 }]);
     setTimeout(() => {
@@ -78,6 +115,20 @@ const Work = () => {
     }, 300);
   };
 
+
+
+  const handleWhichWorkPopupIsTargeted = (title) =>{
+     setPopupWorkCounter(popupWorkCounter+1)
+      setPopupWork(title);
+  }
+
+  
+  useEffect(() => {
+    // This effect runs whenever the 'title' state is updated
+    handleOpenPopup(); // This will use the updated 'title'
+  }, [popupWorkCounter]); // Listen to changes in the 'title' state
+
+    
   return (
     <>
       <h2 className="head-text">
@@ -119,8 +170,10 @@ const Work = () => {
             }`}
             key={index}
           >
+             <img className={`${work.recent ? "showNewImage":"RemoveNewImage"}`} src={images.newImage} ></img>
             <div className="app__work-img app__flex">
               <img src={urlFor(work.imgUrl)} alt={work.name} />
+             
             </div>
 
             <div className="app__work-content app__flex">
@@ -136,6 +189,7 @@ const Work = () => {
                     {work.stacks?.map((stack, index) => (
                       <span
                         className="bold-text"
+                        key={index}
                         style={{
                           backgroundColor: `${
                             colorsArray[index % colorsArray.length]
@@ -164,24 +218,20 @@ const Work = () => {
                   <AiFillGithub />
                 </a>
                 <a
-                  onClick={() =>
-                    popupStates[work.title]
-                      ? handleClosePopup(work.title)
-                      : handleOpenPopup(work.title)
-                  }
+                  onClick={() =>{handleWhichWorkPopupIsTargeted(work.title)}}
                   target="_blank"
                   rel="noreferrer"
                   key={work.title}
                 >
-                  {popupStates[work.title] && (
+                  <BiSolidVideo />
+                </a>
+                {popupStates[work.title] && (
                     <PopOut
-                      onClose={() => handleClosePopup(work.title)}
+                     onClose={()=>handleClosePopup()}
                       title={work.title}
                       link={work.videoLink}
                     />
                   )}
-                  <BiSolidVideo />
-                </a>
               </div>
             </div>
           </div>

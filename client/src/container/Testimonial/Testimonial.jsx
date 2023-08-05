@@ -21,7 +21,6 @@ const Testimonial = () => {
 
     client.fetch(query).then((data) => {
       setTestimonials(data);
-    //  console.log(data[1].imgurl.asset._ref);
     });
 
     client.fetch(brandsQuery).then((data) => {

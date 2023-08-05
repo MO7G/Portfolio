@@ -44,7 +44,9 @@ import chat from '../assets/businessman.png'
 import shuttle from '../assets/shuttle.png'
 import rocket from '../assets/rocket.gif'
 import outbox from '../assets/outbox.png'
+import newImage from '../assets/new.png'
 export default {
+  newImage,
   rocket,
   shuttle,
   chat,
