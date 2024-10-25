@@ -40,7 +40,7 @@ const Header = () => (
 
         <div className="tag-cmp app__flex">
         <h1 className="head-text-1"> 
-    <img src={images.student} alt='student'></img> 
+  
     <h1 className="head-text-1"> 
     <img src={images.student} alt='student' />
     I am a final-year student Senior - 2 at <span style={{color:'var(--secondary-color)'}}>Ain Shams University</span>, specializing in <span style={{color:'var(--secondary-color)'}}>Computer Engineering</span> and <span style={{color:'var(--secondary-color)'}}>Software Systems</span>. 
