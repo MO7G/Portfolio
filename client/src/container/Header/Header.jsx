@@ -39,7 +39,15 @@ const Header = () => (
     >         
 
         <div className="tag-cmp app__flex">
-          <h1 className="head-text-1"> <img src={images.student} alt='student' ></img> I am a junior student at <span style={{color:'var(--secondary-color)'}}>Ain Shams University</span> , Faculty of Engineering, specializing in  <span style={{color:'var(--secondary-color)'}}>Computer Engineering </span>and <span style={{color:'var(--secondary-color)'}}> Software Systems</span>. I have experience in <span style={{color:'var(--secondary-color)'}}>backend development</span>  and am currently exploring the fields of machine learning and NLP. I am skilled in various programming languages and technologies, and I also participate in <span style={{color:'var(--secondary-color)'}}> competitive programming</span> </h1>
+        <h1 className="head-text-1"> 
+    <img src={images.student} alt='student'></img> 
+    <h1 className="head-text-1"> 
+    <img src={images.student} alt='student' />
+    I am a final-year student Senior - 2 at <span style={{color:'var(--secondary-color)'}}>Ain Shams University</span>, specializing in <span style={{color:'var(--secondary-color)'}}>Computer Engineering</span> and <span style={{color:'var(--secondary-color)'}}>Software Systems</span>. 
+    With a solid foundation in <span style={{color:'var(--secondary-color)'}}>backend development</span>, I am currently focusing on <span style={{color:'var(--secondary-color)'}}>distributed systems</span>, <span style={{color:'var(--secondary-color)'}}>microservices architecture</span>, and <span style={{color:'var(--secondary-color)'}}>cloud technologies</span>. 
+    I am proficient in various programming languages and technologies, and actively participate in <span style={{color:'var(--secondary-color)'}}>competitive programming</span> to further enhance my skills.
+</h1>
+</h1>
         </div>
     { /*<img src={images.personal} alt="profile_bg" /> */}
     {/*    <motion.img
