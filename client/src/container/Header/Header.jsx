@@ -41,12 +41,25 @@ const Header = () => (
         <div className="tag-cmp app__flex">
         <h1 className="head-text-1"> 
   
-    <h1 className="head-text-1"> 
-    <img src={images.student} alt='student' />
-    I am a final-year student Senior - 2 at <span style={{color:'var(--secondary-color)'}}>Ain Shams University</span>, specializing in <span style={{color:'var(--secondary-color)'}}>Computer Engineering</span> and <span style={{color:'var(--secondary-color)'}}>Software Systems</span>. 
-    With a solid foundation in <span style={{color:'var(--secondary-color)'}}>backend development</span>, I am currently focusing on <span style={{color:'var(--secondary-color)'}}>distributed systems</span>, <span style={{color:'var(--secondary-color)'}}>microservices architecture</span>, and <span style={{color:'var(--secondary-color)'}}>cloud technologies</span>. 
-    I am proficient in various programming languages and technologies, and actively participate in <span style={{color:'var(--secondary-color)'}}>competitive programming</span> to further enhance my skills.
+        <h1 className="head-text-1">
+  <div className="justified-text">
+    I am a final-year student Senior - 2 at 
+    <span style={{ color: 'var(--secondary-color)' }}> Ain Shams University</span>, 
+    specializing in 
+    <span style={{ color: 'var(--secondary-color)' }}> Computer Engineering</span> and 
+    <span style={{ color: 'var(--secondary-color)' }}> Software Systems</span>. 
+    With a solid foundation in 
+    <span style={{ color: 'var(--secondary-color)' }}> backend development</span>, 
+    I am currently focusing on 
+    <span style={{ color: 'var(--secondary-color)' }}> distributed systems</span>, 
+    <span style={{ color: 'var(--secondary-color)' }}> microservices architecture</span>, 
+    and 
+    <span style={{ color: 'var(--secondary-color)' }}> cloud technologies</span>. 
+    I am proficient in various programming languages and technologies, and actively participate in 
+    <span style={{ color: 'var(--secondary-color)' }}> competitive programming</span> to further enhance my skills.
+  </div>
 </h1>
+
 </h1>
         </div>
     { /*<img src={images.personal} alt="profile_bg" /> */}
