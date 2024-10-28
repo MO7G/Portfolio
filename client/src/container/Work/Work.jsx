@@ -1,5 +1,7 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { useState, useEffect } from "react";
 import { AiFillEye, AiFillGithub } from "react-icons/ai";
+import { FaRegFilePdf } from "react-icons/fa";
 import { BiSolidVideo } from "react-icons/bi";
 import { MdDescription } from "react-icons/md";
 import { colorsArray } from "../../assets/general/colors";
@@ -16,11 +18,11 @@ const Work = () => {
   const [activeFilter, setActiveFilter] = useState("All");
   const [animateCard, setAnimateCard] = useState({ y: 0, opacity: 1 });
   const [popupStates, setPopupStates] = useState({});
-  const [popupWork,setPopupWork] = useState(false);
-  const [popupWorkCounter,setPopupWorkCounter] = useState(0);
-  const [windowScrollY,setWindowScrollY] = useState();
+  const [popupWork, setPopupWork] = useState(false);
+  const [popupWorkCounter, setPopupWorkCounter] = useState(0);
+  const [windowScrollY, setWindowScrollY] = useState();
+  const [pdfUrl, setPdfUrl] = useState(null);
   const scrollThreshold = 400; // Set the scroll threshold here (in pixels)
-
   useEffect(() => {
     const query = '*[_type == "works"]';
 
@@ -28,24 +30,22 @@ const Work = () => {
       setWorks(data);
       setFilterWork(data);
     });
-
-
-   
   }, []);
 
-  useEffect(()=>{
+  useEffect(() => {
     const handleVisibilityChange = () => {
       if (document.visibilityState != "hidden") {
         handleClosePopup(false);
       }
     };
     const handleScroll = () => {
-
-      if( (window.scrollY - scrollThreshold> windowScrollY) || (window.scrollY + scrollThreshold < windowScrollY)){
+      if (
+        window.scrollY - scrollThreshold > windowScrollY ||
+        window.scrollY + scrollThreshold < windowScrollY
+      ) {
         handleClosePopup();
-      }    
       }
-
+    };
 
     window.addEventListener("scroll", handleScroll);
     document.addEventListener("visibilitychange", handleVisibilityChange);
@@ -54,7 +54,7 @@ const Work = () => {
       document.removeEventListener("visibilitychange", handleVisibilityChange);
       window.removeEventListener("scroll", handleScroll);
     };
-  },[windowScrollY])
+  }, [windowScrollY]);
 
   useEffect(() => {
     // Initialize the popupStates state with default values for each item
@@ -74,14 +74,11 @@ const Work = () => {
     setPopupStates(initialPopupStates);
   }, [filterWork]);
 
-
-
-
   const handleOpenPopup = () => {
     // Open the popup for the specified item title
-  //  let temp = document.visibilityState;
-  setWindowScrollY(window.scrollY);
-  let title = popupWork
+    //  let temp = document.visibilityState;
+    setWindowScrollY(window.scrollY);
+    let title = popupWork;
     const newPopupStates = {
       ...popupStates,
       [title]: true,
@@ -89,17 +86,15 @@ const Work = () => {
 
     setPopupStates(newPopupStates);
   };
-  
 
   const handleClosePopup = () => {
     // Create a new object with all titles set to false
     const allTitlesFalse = Object.keys(popupStates).reduce((acc, title) => {
       acc[title] = false;
       return acc;
-    }, {});  
+    }, {});
     setPopupStates(allTitlesFalse); // Update the state with the new object
   };
-  
 
   const handleWorkFilter = (item) => {
     setActiveFilter(item);
@@ -115,20 +110,32 @@ const Work = () => {
     }, 300);
   };
 
+  const handleWhichWorkPopupIsTargeted = (title) => {
+    setPopupWorkCounter(popupWorkCounter + 1);
+    setPopupWork(title);
+  };
 
 
-  const handleWhichWorkPopupIsTargeted = (title) =>{
-     setPopupWorkCounter(popupWorkCounter+1)
-      setPopupWork(title);
-  }
-
-  
   useEffect(() => {
     // This effect runs whenever the 'title' state is updated
     handleOpenPopup(); // This will use the updated 'title'
   }, [popupWorkCounter]); // Listen to changes in the 'title' state
 
-    
+
+  const handlePdfClick = (assetRef) => {
+    // Extract the file ID from the asset reference
+    // "file-dc9dda07c0497b297a284ad3587bf04b82234234-pdf"
+    // match will contain ["-dc9dda07c0497b297a284ad3587bf04b828c8fc6-","dc9dda07c0497b297a284ad3587bf04b82234234"]
+    // we need the second one at index 1 !!!
+    let match = assetRef.match(/-(.*?)-/);
+    const assetId = match[1];
+    const PROJECT_ID = process.env.REACT_APP_PROJECT_ID;
+    // Construct the PDF URL based on the provided format
+    const pdfUrl = `https://cdn.sanity.io/files/${PROJECT_ID}/production/${assetId}.pdf`;
+    // Open the PDF in a new tab
+    window.open(pdfUrl, "_blank");
+  };
+
   return (
     <>
       <h2 className="head-text">
@@ -170,10 +177,12 @@ const Work = () => {
             }`}
             key={index}
           >
-             <img className={`${work.recent ? "showNewImage":"RemoveNewImage"}`} src={images.newImage} ></img>
+            <img
+              className={`${work.recent ? "showNewImage" : "RemoveNewImage"}`}
+              src={images.newImage}
+            ></img>
             <div className="app__work-img app__flex">
               <img src={urlFor(work.imgUrl)} alt={work.name} />
-             
             </div>
 
             <div className="app__work-content app__flex">
@@ -214,24 +223,38 @@ const Work = () => {
                   </a>
                 )}
 
+                {work?.pdfFile?.asset && ( // Check if the asset URL exists
+                  <a
+                  onClick={() => handlePdfClick(work.pdfFile.asset._ref)} // Pass the asset reference to the click handler
+                  href={work.pdfFile.asset._ref} // Use the URL of the uploaded PDF
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    <FaRegFilePdf />
+                  </a>
+                )}
+
                 <a href={work.codeLink} target="_blank" rel="noreferrer">
                   <AiFillGithub />
                 </a>
                 <a
-                  onClick={() =>{handleWhichWorkPopupIsTargeted(work.title)}}
+                  onClick={() => {
+                    handleWhichWorkPopupIsTargeted(work.title);
+                  }}
                   target="_blank"
                   rel="noreferrer"
                   key={work.title}
                 >
                   <BiSolidVideo />
                 </a>
+
                 {popupStates[work.title] && (
-                    <PopOut
-                     onClose={()=>handleClosePopup()}
-                      title={work.title}
-                      link={work.videoLink}
-                    />
-                  )}
+                  <PopOut
+                    onClose={() => handleClosePopup()}
+                    title={work.title}
+                    link={work.videoLink}
+                  />
+                )}
               </div>
             </div>
           </div>
