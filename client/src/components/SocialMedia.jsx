@@ -7,7 +7,7 @@ import { PiReadCvLogoBold } from "react-icons/pi";
 
 const SocialMedia = () => (
   <div className="app__social">
-    <a href="https://docs.google.com/document/d/1Nwx2N3sssqoIQrYpYX0VDksXdjmIfYzvCg1Mn5yhPl4/edit?tab=t.0">
+    <a target="_blank" rel="noreferrer" href="https://docs.google.com/document/d/1Nwx2N3sssqoIQrYpYX0VDksXdjmIfYzvCg1Mn5yhPl4/edit?tab=t.0">
     <div>
       <PiReadCvLogoBold />
     </div>
